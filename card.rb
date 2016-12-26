@@ -26,13 +26,23 @@ class Deck
   end
 
   def shuffle
-    @card.shuffle
+    @cards.shuffle
   end
 
   def pick!
-    @card.sample(1)
+    @cards.pop
   end
 end
+
+class Player
+  attr_reader :cards
+  def initialize
+
+  end
+end
+
+player1 = Player.new
+player2 = Player.new
 
 raise unless (Card.new(2, 'heart') > Card.new(3, 'diamond'))
 raise unless (Card.new(4, 'heart') > Card.new(3, 'diamond'))
@@ -41,5 +51,7 @@ raise unless (Card.new(1, 'heart').suit == Card.new(3, 'heart').suit)
 raise if (Card.new(1, 'diamond').suit == Card.new(3, 'heart').suit)
 
 raise unless (Deck.new.cards.length == 52)
-raise unless Deck.new.cards.length
+deck = Deck.new
+deck.pick!
+raise unless deck.cards.length == 51
 
