@@ -45,5 +45,28 @@ _player2 = Player.new
 
 
 class CardSet
+  attr_reader :cards
+  include Comparable
+  def initialize(*cards)
+    @cards = cards
+  end
 
+  def <=>(other)
+    @cards.first <=> other.cards.first
+  end
+end
+
+class Game
+  def initialize(*players)
+    @players = players
+  end
+end
+
+class Dealer
+  def initialize
+    @deck = Deck.new
+  end
+
+  def distribute
+  end
 end
