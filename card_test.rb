@@ -13,11 +13,18 @@ class CardTest < Minitest::Test
 end
 
 class DeckTest < Minitest::Test
-  def test_deck
+  def test_pick
     assert (Deck.new(Player.new).cards.length == 52)
     deck = Deck.new(Player.new)
-
+    deck.pick!
     assert deck.cards.length == 51
+  end
+  def test_distribute
+    p1 = Player.new
+    p2 = Player.new
+    deck = Deck.new(p1, p2)
+    deck.distribute
+    assert p1.cards.size == 26
   end
 end
 
