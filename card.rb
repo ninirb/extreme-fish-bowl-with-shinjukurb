@@ -43,3 +43,7 @@ end
 _player1 = Player.new
 _player2 = Player.new
 
+
+class CardSet
+
+end
