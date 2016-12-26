@@ -8,12 +8,15 @@ class Card
     @number = number.to_i
     # 歴史的経緯によりmark
     @mark = mark
+    @pwer
   end
 
   def <=>(other)
-    (1..13).
     other.number - @number
   end
+end
+
+class Deck
 end
 
 raise unless (Card.new('2', 'heart') > Card.new('3', 'diamond'))
