@@ -28,6 +28,14 @@ class DeckTest < Minitest::Test
 
     assert p1.cards.size == 26
   end
+
+  def test_first_player
+    players = Array.new(10) { Player.new }
+    deck = Deck.new(*players)
+    deck.distribute
+
+    assert deck.first_player.cards.any? {|c| c.suit == 'diamond' && c.number == 3 }
+  end
 end
 
 class CardSetTest < Minitest::Test
@@ -35,3 +43,4 @@ class CardSetTest < Minitest::Test
     assert CardSet.new(Card.new(2, "heart"), Card.new(2, "diamond")) > CardSet.new(Card.new(3, "heart"), Card.new(3, "diamond"))
   end
 end
+

@@ -43,7 +43,8 @@ class Deck
 
   def first_player
     @players.find do |player|
-      player.cards.find
+      player.cards.find {|c| c.suit == 'diamond' && c.number == 3 }
+    end
   end
 end
 
