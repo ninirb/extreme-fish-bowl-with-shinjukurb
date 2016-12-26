@@ -14,9 +14,9 @@ end
 
 class DeckTest < Minitest::Test
   def test_deck
-    assert (Deck.new.cards.length == 52)
-    deck = Deck.new
-    deck.pick!
+    assert (Deck.new(Player.new).cards.length == 52)
+    deck = Deck.new(Player.new)
+
     assert deck.cards.length == 51
   end
 end

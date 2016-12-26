@@ -32,7 +32,7 @@ class Deck
   def distribute
     until @cards
       @players.each do |player|
-        player.cards << pick!
+        player.draw(pick!)
       end
     end
   end
@@ -45,8 +45,12 @@ end
 class Player
   attr_accessor :cards
 
-  def initialize(cards)
-    @cards = cards
+  def initialize
+    @cards = []
+  end
+
+  def draw(card)
+    @cards << card
   end
 end
 
