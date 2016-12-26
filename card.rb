@@ -1,18 +1,12 @@
 class Card
   include Comparable
   attr_reader :number, :power
-  attr_reader :mark
+  attr_reader :suit
 
-  def initialize(number, mark)
+  def initialize(number, suit)
     @number = number
-    # 歴史的経緯によりmark -> suit ni sitai
-    @mark = mark
-    @power = case @number
-    when 1,2
-      @number + 13
-    else
-      @number
-    end
+    @suit = suit
+    @power = [2, 1, *(13..3)]
   end
 
   def <=>(other)
