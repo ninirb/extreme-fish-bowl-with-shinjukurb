@@ -2,5 +2,5 @@
 source "https://rubygems.org"
 
 # gem "rails"
-gem 'minitest'
+gem 'minitest', require: 'minitest/autorun'
 gem 'pry'

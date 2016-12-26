@@ -35,12 +35,15 @@ class Deck
         player.draw(pick!)
       end
     end
-    require 'pry'
-    binding.pry
   end
 
   def pick!
     @cards.pop
+  end
+
+  def first_player
+    @players.find do |player|
+      player.cards.find
   end
 end
 

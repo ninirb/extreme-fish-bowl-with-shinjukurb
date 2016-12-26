@@ -1,4 +1,5 @@
-require 'minitest/autorun'
+require 'bundler'
+Bundler.require
 require './card'
 
 class CardTest < Minitest::Test
