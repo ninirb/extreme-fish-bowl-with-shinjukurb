@@ -40,6 +40,6 @@ class Player
   end
 end
 
-player1 = Player.new
-player2 = Player.new
+_player1 = Player.new
+_player2 = Player.new
 
