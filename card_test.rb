@@ -24,6 +24,7 @@ class DeckTest < Minitest::Test
     p2 = Player.new
     deck = Deck.new(p1, p2)
     deck.distribute
+
     assert p1.cards.size == 26
   end
 end

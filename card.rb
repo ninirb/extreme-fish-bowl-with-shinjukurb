@@ -19,7 +19,7 @@ class Deck
 
   SUITS = %w(heart diamond spade crub).freeze
 
-  def initialize(players)
+  def initialize(*players)
     @cards = SUITS.map do |suit|
       (1..13).map { |num| Card.new(num, suit) } end.flatten
     @players = players
@@ -30,11 +30,13 @@ class Deck
   end
 
   def distribute
-    until @cards
+    until @cards.empty?
       @players.each do |player|
         player.draw(pick!)
       end
     end
+    require 'pry'
+    binding.pry
   end
 
   def pick!
