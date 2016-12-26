@@ -16,8 +16,21 @@ end
 
 class Deck
   attr_reader :cards
-  def initialize(card)
-    @cards
+
+  SUITS = %w(heart diamond spade crub).freeze
+
+  def initialize
+    @cards = SUITS.map do |suit|
+      (1..13).map { |num| Card.new(num, suit) }
+    end.flatten
+  end
+
+  def shuffle
+    @card.shuffle
+  end
+
+  def pick!
+    @card.sample(1)
   end
 end
 
@@ -26,4 +39,7 @@ raise unless (Card.new(4, 'heart') > Card.new(3, 'diamond'))
 
 raise unless (Card.new(1, 'heart').suit == Card.new(3, 'heart').suit)
 raise if (Card.new(1, 'diamond').suit == Card.new(3, 'heart').suit)
+
+raise unless (Deck.new.cards.length == 52)
+raise unless Deck.new.cards.length
 
