@@ -3,10 +3,11 @@ class Card
   attr_reader :number, :power
   attr_reader :suit
 
-  def initialize(number, suit)
+  def initialize(number, suit, dummy: false)
     @number = number
     @suit = suit
     @power = ([2, 1] + (3..13).to_a.reverse).reverse
+    @dummy = dummy
   end
 
   def <=>(other)
@@ -38,7 +39,7 @@ class Deck
   end
 
   def pick!
-    @cards.pop
+    @cards.pop || Card.new(1, 'h')
   end
 
   def first_player
@@ -59,10 +60,6 @@ class Player
     @cards << card
   end
 end
-
-_player1 = Player.new
-_player2 = Player.new
-
 
 class CardSet
   attr_reader :cards
