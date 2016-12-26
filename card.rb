@@ -3,11 +3,10 @@ class Card
   attr_reader :number, :power
   attr_reader :suit
 
-  def initialize(number, suit, dummy: false)
+  def initialize(number, suit)
     @number = number
     @suit = suit
     @power = ([2, 1] + (3..13).to_a.reverse).reverse
-    @dummy = dummy
   end
 
   def <=>(other)
@@ -31,15 +30,16 @@ class Deck
   end
 
   def distribute
-    until @cards.empty?
+    loop do
       @players.each do |player|
+        return if @cards.empty?
         player.draw(pick!)
       end
     end
   end
 
   def pick!
-    @cards.pop || Card.new(1, 'h')
+    @cards.pop
   end
 
   def first_player

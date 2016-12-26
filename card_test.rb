@@ -20,6 +20,7 @@ class DeckTest < Minitest::Test
     deck.pick!
     assert deck.cards.length == 51
   end
+
   def test_distribute
     p1 = Player.new
     p2 = Player.new
@@ -30,11 +31,14 @@ class DeckTest < Minitest::Test
   end
 
   def test_first_player
+    diamond_player = Player.new
     players = Array.new(10) { Player.new }
     deck = Deck.new(*players)
     deck.distribute
 
-    assert deck.first_player.cards.any? {|c| c.suit == 'diamond' && c.number == 3 }
+    diamond_
+
+    assert deck.first_player(players) == diamond_player
   end
 end
 
