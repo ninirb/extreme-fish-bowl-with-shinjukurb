@@ -19,13 +19,22 @@ class Deck
 
   SUITS = %w(heart diamond spade crub).freeze
 
-  def initialize
+  def initialize(players)
     @cards = SUITS.map do |suit|
       (1..13).map { |num| Card.new(num, suit) } end.flatten
+    @players = players
   end
 
   def shuffle
     @cards.shuffle
+  end
+
+  def distribute
+    until @cards
+      @players.each do |player|
+        player.cards << pick!
+      end
+    end
   end
 
   def pick!
@@ -34,9 +43,10 @@ class Deck
 end
 
 class Player
-  attr_reader :cards
-  def initialize
+  attr_accessor :cards
 
+  def initialize(cards)
+    @cards = cards
   end
 end
 
@@ -53,20 +63,5 @@ class CardSet
 
   def <=>(other)
     @cards.first <=> other.cards.first
-  end
-end
-
-class Game
-  def initialize(*players)
-    @players = players
-  end
-end
-
-class Dealer
-  def initialize
-    @deck = Deck.new
-  end
-
-  def distribute
   end
 end
